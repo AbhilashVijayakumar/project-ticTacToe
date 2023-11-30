@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import {act, render, screen} from "@testing-library/react";
 import gameSquare from "./gameSquare";
 
-describe("when clicked, x or 0 appears", () => {
+describe("Game square shows X or O", () => {
 
     test("X", async () => {
         // Given: Empty game square and player 1's turn
@@ -14,14 +14,13 @@ describe("when clicked, x or 0 appears", () => {
 
         // When: user click game square
         const gameSquare = screen.getByTestId("gameSquare");
-        act(async () => {
+        await act(async () => {
             await userEvent.click(gameSquare);
             console.log("Hello");
         })
 
         // Then: X appears
-        const gameSquareWithX = await screen.findByText("X");
-        expect(gameSquareWithX.toBeVisible())
+        expect(screen.getByText("X")).toHaveTextContent("X");
 
     })
 })
