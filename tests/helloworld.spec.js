@@ -6,6 +6,6 @@ test("Hello", async ({ page }) => {
     // When: Page loaded
     // Then: TTT Title visible
     await expect(
-        page.getByText("Tic Tac Toe Game Page!"
-        ).toBeVisible());
+        page.getByRole("heading", { name: "Tic Tac Toe Game Page" })
+    ).toBeVisible();
 })
