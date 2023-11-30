@@ -35,4 +35,38 @@ test.describe("Winning (and non-winning) conditions", async () => {
         console.log("check ok");
 
     })
+
+    test("Losing condition", async ({ page }) => {
+        // Given: player 2 wins
+        await setup(page)
+
+        // When: this sequence of clicks
+        await clickCell(0, page)
+        await clickCell(1, page)
+        await clickCell(3, page)
+        await clickCell(4, page)
+        await clickCell(5, page)
+        await clickCell(7, page)
+
+        // Then: show payer 2 wins
+        console.log("check");
+        const result = await page.getByTestId("result")
+        console.log(await result.innerHTML())
+        expect(await result.innerHTML()).toBe("Player 2 WINS!");
+        console.log("check ok");
+    })
 })
+
+async function setup(page) {
+
+    await  page.goto("/")
+    const player1Submit = await page.getByTestId("player1Submit")
+    await player1Submit.click()
+    const player2Submit = await page.getByTestId("player2Submit")
+    await player2Submit.click()
+}
+
+async function clickCell(n, page) {
+    const square = await page.getByTestId(`gameSquare${n}`)
+    await square.click()
+}
