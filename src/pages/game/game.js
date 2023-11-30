@@ -99,7 +99,12 @@ function Game() {
                 placeholder="Input Player 2 name"
                 onChange={(e) => handleChange(e)}
               />
-              <input type="submit" value="READY!" className="readyButton" />
+              <input
+                  type="submit"
+                  value="READY!"
+                  className="readyButton"
+                  data-testId="player2Submit"
+              />
             </form>
           ) : (
             <h3>{player2.toUpperCase()} READY!</h3>

@@ -26,7 +26,7 @@ function GameSquare({ id, changeTurn, turn, markSquare, winner, reset }) {
       className={`gameSquare square${id}`}
       onClick={handleClick}
       id={`square${id}`}
-      data-testid='gameSquare'
+      data-testid={`gameSquare${id}`}
     >
       <p>{owner ? owner : ""}</p>
     </div>

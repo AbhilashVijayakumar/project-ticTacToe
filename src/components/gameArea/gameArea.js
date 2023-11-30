@@ -125,13 +125,14 @@ function GameArea({ player1, player2, hardReset }) {
       ) : winner === 3 ? (
         <h4>TIE GAME</h4>
       ) : (
-        <h4>{winner === 1 ? player1 : player2} WINS!</h4>
+        <h4 data-testid="result">{winner === 1 ? player1 : player2} WINS!</h4>
       )}
       <div className="gameBoard">
         {grid.map((square) => {
           return (
             <GameSquare
               id={square.id}
+              data-testid={square.id}
               key={square.id}
               changeTurn={changeTurn}
               turn={turn}
